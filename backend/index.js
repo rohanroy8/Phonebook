@@ -33,6 +33,10 @@ let persons = [
     }
 ]
 
+app.get('/', (request, repsonse) => {
+    response.send(<h1>Backend is working fine</h1>)
+})
+
 app.get('/api/persons',(request,response) =>{
     response.json(persons)
 })
