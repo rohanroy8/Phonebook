@@ -1,7 +1,10 @@
 const morgan = require('morgan')
 const express = require('express')
+const cors = require('cors')
+
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 
 morgan.token('data', (req) => {
@@ -33,8 +36,8 @@ let persons = [
     }
 ]
 
-app.get('/', (request, repsonse) => {
-    response.send(<h1>Backend is working fine</h1>)
+app.get('/', (request,response) => {
+    response.send('<h1>Backend is working fine</h1>')
 })
 
 app.get('/api/persons',(request,response) =>{
@@ -104,7 +107,6 @@ app.delete('/api/persons/:id', (request,response) => {
 })
 
 const PORT = process.env.PORT || 3001
-app.listen(PORT, ()=>{
-    console.log('server running on port 3001')
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running on port ${PORT}`)
 })
-
